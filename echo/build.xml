@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<project name="deploy">
+	
+	<description>Contains targets for continuous deployment.</description>
+	
+	<property name="keyfile" value="/home/devadmin/.ssh/id_rsa" />
+		
+	<target name="deploy-mule-archive" description="Uploads the Mule ZIP archive to a remote server.">		
+		<scp 
+			trust="true" 
+			keyfile="${keyfile}"
+			passphrase=""
+			file="target/echo-0.0.1-SNAPSHOT.zip" 
+			todir="vagrant@192.168.33.10:/opt/mule-standalone-3.3.1/apps" />		
+	</target>
+	
+</project>
