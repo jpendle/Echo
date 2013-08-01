@@ -10,7 +10,7 @@
 	<property name="mule-archive" value="echo-0.0.1-SNAPSHOT.zip" />
 	<property name="mule-apps-dir" value="/opt/mule-standalone-3.3.1/apps" />
 		
-	<target name="deploy-mule-archive" description="Uploads the Mule ZIP archive to a remote server.">		
+	<target name="deploy" description="Uploads the Mule ZIP archive to a remote server.">		
 		<scp 
 			trust="true" 
 			keyfile="${keyfile}"
