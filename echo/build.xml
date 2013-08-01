@@ -4,11 +4,7 @@
 	
 	<description>Contains targets for continuous deployment.</description>
 	
-	<property name="keyfile" value="/home/devadmin/.ssh/id_rsa" />
-	<property name="user" value="vagrant" />
-	<property name="server" value="192.168.33.10" />
-	<property name="mule-archive" value="echo-0.0.1-SNAPSHOT.zip" />
-	<property name="mule-apps-dir" value="/opt/mule-standalone-3.3.1/apps" />
+	<property file="build.properties" />
 		
 	<target name="deploy" description="Uploads the Mule ZIP archive to a remote server.">		
 		<scp 
@@ -16,12 +12,12 @@
 			keyfile="${keyfile}"
 			passphrase=""
 			file="target/${mule-archive}" 
-			todir="${user}@${server}:/tmp" 
+			todir="${remote.user}@${server}:/tmp" 
 		/>
 
 		<sshexec
 			host="${server}"
-			username="${user}"
+			username="${remote.user}"
 			trust="true"
 			keyfile="${keyfile}"
 			passphrase=""
