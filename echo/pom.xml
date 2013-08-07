@@ -51,6 +51,11 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+				<plugin>
+  					<groupId>org.apache.maven.plugins</groupId>
+  					<artifactId>maven-deploy-plugin</artifactId>
+  					<version>2.7</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -68,4 +73,16 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+    		<repository>
+        		<id>ci-immediate</id>
+        		<name>ci-immediate-releases</name>
+        		<url>http://162.13.44.112:8081/artifactory/wes</url>
+    		</repository>
+    		<snapshotRepository>
+        		<id>ci-immediate</id>
+        		<name>ci-immediate-snapshots</name>
+        		<url>http://162.13.44.112:8081/artifactory/wes</url>
+    		</snapshotRepository>
+	</distributionManagement>
 </project>

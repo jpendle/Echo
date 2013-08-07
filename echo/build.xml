@@ -1,32 +1,23 @@
 <?xml version="1.0"?>
 
 <project name="deploy">
-	
+
 	<description>Contains targets for continuous deployment.</description>
-	
+
 	<property name="keyfile" value="/home/devadmin/.ssh/id_rsa" />
 	<property name="user" value="vagrant" />
-	<property name="server" value="192.168.33.10" />
+	<property name="server" value="mule-standalone" />
 	<property name="mule-archive" value="echo-0.0.1-SNAPSHOT.zip" />
-	<property name="mule-apps-dir" value="/opt/mule-standalone-3.3.1/apps" />
-		
-	<target name="deploy-mule-archive" description="Uploads the Mule ZIP archive to a remote server.">		
-		<scp 
-			trust="true" 
-			keyfile="${keyfile}"
-			passphrase=""
-			file="target/${mule-archive}" 
-			todir="${user}@${server}:/tmp" 
-		/>
+	<property name="mule-apps-dir" value="/opt/mule-standalone/apps" />
 
-		<sshexec
-			host="${server}"
-			username="${user}"
-			trust="true"
-			keyfile="${keyfile}"
-			passphrase=""
-			command="mv /tmp/${mule-archive} ${mule-apps-dir}"		
-		/>
+	<target name="deploy-mule-archive" description="Uploads the Mule ZIP archive to a remote server.">
+		<scp trust="true" keyfile="${keyfile}" passphrase=""
+			file="target/${mule-archive}" todir="${user}@${server}:/tmp" />
+
+		<sshexec host="${server}" username="${user}" trust="true"
+			keyfile="${keyfile}" passphrase=""
+			command="mv /tmp/${mule-archive} ${mule-apps-dir}" />
 	</target>
+
 	
 </project>
