@@ -3,16 +3,6 @@
 <project name="deploy">
 
 	<description>Contains targets for continuous deployment.</description>
-
-	<property file="build.properties" />
-
-	<target name="deploy-mule-archive" description="Uploads the Mule ZIP archive to a remote server.">
-		<scp trust="true" keyfile="${keyfile}" passphrase=""
-			file="target/${mule-archive}" todir="${user}@${server}:/tmp" />
-
-		<sshexec host="${server}" username="${user}" trust="true"
-			keyfile="${keyfile}" passphrase=""
-			command="mv /tmp/${mule-archive} ${mule-apps-dir}" />
 	
 	<property file="build.properties" />
 		
